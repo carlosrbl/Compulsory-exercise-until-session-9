@@ -27,4 +27,40 @@ public class Team extends Participant{
         }
         this.players = players;
     }
+
+    public int numberOfMembers()
+    {
+        int count = 0;
+        for (int i=0;i< players.length;i++)
+        {
+            if (players[i] != null)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public String showPlayers()
+    {
+        String allPlayers="";
+        for (int i=0;i<players.length;i++)
+        {
+            if (i== players.length-1)
+            {
+                allPlayers+= players[i];
+            }
+            else
+            {
+                allPlayers += players[i]+"-";
+            }
+        }
+        return allPlayers;
+    }
+    @Override
+    public String toString()
+    {
+        return super.toString()+" - "+"Members: "+numberOfMembers()+"/"
+                +players.length+":"+showPlayers();
+    }
 }
