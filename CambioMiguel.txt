@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ok.
+=======
+Buenos dias
+>>>>>>> bcddc549e5db5590ea799b0e980aa280b5ef399c
