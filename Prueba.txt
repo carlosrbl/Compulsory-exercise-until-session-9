@@ -1,19 +1,93 @@
-4 package
---tournament.main
-  --TournamentManager
---tournament.data
---tournament.comparators
---tournament.exceptions
+Estructura del Proyecto
+Se debe crear un proyecto en IntelliJ llamado eSportsTournament con los siguientes paquetes:
 
-1.1 Abstract Class: Tournament
---IndividualTournament
---TeamTournament
---MixedTournament
+tournament.main: Contiene la clase Main y TournamentManager.
+tournament.data: Almacena clases e interfaces para manejar los datos del torneo.
+tournament.comparators: Contiene comparadores para ordenar información.
+tournament.exceptions: Guarda excepciones personalizadas.
+Clases Principales
+1. Clase Abstracta: Tournament
+Atributos: name, game y prize.
+Métodos:
+Constructor con parámetros.
+Getters y setters.
+toString() → Ejemplo de salida:
+Tournament Masters League (League of Legends)
+2. Subclases de Tournament
+IndividualTournament: Para torneos individuales.
+TeamTournament: Atributo adicional playersPerTeam.
+MixedTournament: Atributo adicional gameMode ("1v1" o "5v5").
+Cada subclase debe sobrescribir toString().
+Ejemplo de salida:
+IndividualTournament - Masters Solo (CS:GO) - Prize: 5000€
 
-1.2. Abstract Class: Participant
---Player Class
---Team Class
+3. Clase Abstracta: Participant
+Atributo: name.
+Métodos: Getters, setters y constructor.
+3.1. Player
+Atributos adicionales:
+level (1 a 100).
+ranking (puntuación flotante).
+toString():
+Player: ShadowReaper - Level: 85 - Ranking: 2400.5
+3.2. Team
+Atributo: Array de Player (mínimo 2, máximo 5).
+Métodos:
+addPlayer(Player p): Lanza la excepción FullTeamException si el equipo está completo.
+toString():
+yaml
+Copiar
+Editar
+Team Phoenix - Members: 3/5:
+- Player: ShadowReaper - Level: 85 - Ranking: 2400.5
+- Player: AceGamer - Level: 100 - Ranking: 2500
+4. Match
+Atributos:
+Tournament asociado.
+Participant1 y Participant2.
+result (por defecto: "Pending").
+Método: setResult(String result).
+toString():
+Match in Masters League (LoL) - ShadowReaper vs. FireDragon - Result: Pending
+Lógica del Torneo
+La clase TournamentManager debe manejar:
 
-1.3. Match Class
---associated tournament
---Two participants
+Un array de jugadores registrados (mínimo 10).
+Un array de equipos registrados (mínimo 5).
+Un array de torneos (mínimo 3 de tipos distintos).
+Un array de partidos generados aleatoriamente.
+Métodos requeridos
+void initialize(): Rellena los arrays con datos.
+Player findPlayer(String username): Busca un jugador.
+Team findTeam(String teamName): Busca un equipo.
+void showTournaments(): Muestra torneos disponibles.
+void showPlayerRanking(): Ordena y muestra jugadores por ranking.
+void showTeamRanking(): Ordena y muestra equipos por ranking medio.
+Menú Principal (Main)
+Opciones:
+
+Ver torneos ordenados por nombre.
+Ver jugadores ordenados por ranking y nombre.
+Ver equipos ordenados por ranking.
+Agregar jugador a un equipo.
+Buscar un jugador exacto por nombre.
+Buscar jugadores por coincidencia parcial de nombre.
+Buscar equipos.
+Ver y actualizar resultados de partidos pendientes.
+Salir.
+Para ordenar listas (Opciones 1, 2, 3, 6) se deben usar:
+
+Clases que implementen Comparator.
+Clases anónimas.
+Expresiones lambda (solo el grupo de "Mari Chelo" debe usar 3 métodos en lugar de 2).
+Opciones 5 y 6:
+Búsqueda parcial en nombres.
+
+Opción 8 (Actualizar resultados):
+
+Mostrar partidos pendientes.
+El usuario elige uno y actualiza el resultado.
+Manejo de Errores
+Validar entradas incorrectas.
+Evitar valores inválidos (ej. ranking < 0).
+Capturar FullTeamException al añadir jugadores a equipos llenos.
