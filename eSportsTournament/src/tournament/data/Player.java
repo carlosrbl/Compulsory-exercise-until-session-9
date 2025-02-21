@@ -1,3 +1,7 @@
+package tournament.data;
+
+import tournament.data.Participant;
+
 public class Player extends Participant {
     private int level;
     private float ranking;
