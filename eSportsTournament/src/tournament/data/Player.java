@@ -1,6 +1,6 @@
 package tournament.data;
 
-import tournament.data.Participant;
+import tournament.data.*;
 
 public class Player extends Participant {
     private int level;
@@ -8,7 +8,7 @@ public class Player extends Participant {
 
     public Player(String name, int level, float ranking) {
         super(name);
-        this.level = level;
+        setLevel(level);
         this.ranking = ranking;
     }
 
