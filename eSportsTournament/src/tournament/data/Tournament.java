@@ -2,9 +2,9 @@ package tournament.data;
 
 public abstract class Tournament
 {
-    String name;
-    String game;
-    double price;
+    protected String name;
+    protected String game;
+    protected double price;
 
     public Tournament(String name, String game, double price)
     {
