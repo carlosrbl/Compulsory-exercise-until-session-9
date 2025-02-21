@@ -1,3 +1,5 @@
+package tournament.data;
+
 public abstract class Tournament
 {
     String name;
