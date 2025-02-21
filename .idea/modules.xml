@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Compulsory-exercise-until-session-9.iml" filepath="$PROJECT_DIR$/.idea/Compulsory-exercise-until-session-9.iml" />
       <module fileurl="file://$PROJECT_DIR$/eSportsTournament/eSportsTournament.iml" filepath="$PROJECT_DIR$/eSportsTournament/eSportsTournament.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eSportsTournament/out/out.iml" filepath="$PROJECT_DIR$/eSportsTournament/out/out.iml" />
     </modules>
   </component>
 </project>
