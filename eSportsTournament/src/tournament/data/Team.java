@@ -2,7 +2,7 @@ package tournament.data;
 import tournament.exceptions.*;
 public class Team extends Participant{
     Player[] players;
-
+    float averageTeamRanking;
     public Team(String name, Player[] players) {
         super(name);
         comprovePlayers(players);
@@ -56,6 +56,17 @@ public class Team extends Participant{
             }
         }
         return allPlayers;
+    }
+    public float getAverageTeamRanking()
+    {
+        float average=0;
+        for(int i=0;i< players.length;i++)
+        {
+            average+=players[i].getRanking();
+        }
+
+        averageTeamRanking = average/players.length;
+        return averageTeamRanking;
     }
     @Override
     public String toString()
