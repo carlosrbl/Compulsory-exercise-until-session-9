@@ -1,5 +1,7 @@
 package tournament.data;
 
+import tournament.exceptions.GameModeException;
+
 public class MixedTournament extends Tournament
 {
     private String gameMode;
@@ -8,6 +10,18 @@ public class MixedTournament extends Tournament
     {
         super(name, game, price);
         this.gameMode = gameMode;
+    }
+
+    public void comproveGameMode(String gameMode) throws GameModeException
+    {
+        if (!(gameMode.equalsIgnoreCase("1v1") || gameMode.equalsIgnoreCase("5v5")))
+        {
+            throw new GameModeException("The available game modes are 1v1 or 5v5.");
+        }
+        else
+        {
+            this.gameMode = gameMode;
+        }
     }
 
     @Override
