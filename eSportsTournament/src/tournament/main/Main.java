@@ -301,12 +301,15 @@ public class Main
                 break;
             case 5:
                 FindExactPlayer(tournamentManager);
+                System.out.println();
                 break;
             case 6:
                 FindPlayer(tournamentManager);
+                System.out.println();
                 break;
             case 7:
                 FindTeam(tournamentManager);
+                System.out.println();
                 break;
             case 8:
                 MatchesOrdered(tournamentManager);
@@ -314,6 +317,7 @@ public class Main
                 break;
             case 9:
 
+                System.out.println();
                 break;
             case 10:
                 System.out.println("Finishing Program...");
