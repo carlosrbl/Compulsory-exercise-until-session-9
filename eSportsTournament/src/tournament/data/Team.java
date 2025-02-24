@@ -21,9 +21,9 @@ public class Team extends Participant{
         try {
             ExceptionTeamPlayer.quantityOfPlayers(players);
         }
-        catch (InterruptedException e)
+        catch (IndexOutOfBoundsException e)
         {
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
         this.players = players;
     }
@@ -36,7 +36,6 @@ public class Team extends Participant{
             if (players[i] != null)
             {
                 count++;
-                //comentario de prueba
             }
         }
         return count;
@@ -61,12 +60,12 @@ public class Team extends Participant{
     public float getAverageTeamRanking()
     {
         float average=0;
-        for(int i=0;i< players.length;i++)
+        for(int i=0;i< numberOfMembers();i++)
         {
             average+=players[i].getRanking();
         }
 
-        averageTeamRanking = average/players.length;
+        averageTeamRanking = average/numberOfMembers();
         return averageTeamRanking;
     }
     @Override

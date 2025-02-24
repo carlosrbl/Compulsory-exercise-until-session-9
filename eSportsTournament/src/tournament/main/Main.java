@@ -1,5 +1,8 @@
 package tournament.main;
 
+import tournament.data.Player;
+import tournament.data.Team;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -50,7 +53,14 @@ public class Main
         switch(choice)
         {
             case 1:
-
+               /* Player[] players = new Player[6];
+                players[0] = new Player("p1",15,23.4f);
+                players[1] = new Player("p2", 17, 32.5f);
+                players[2] = new Player("p3", 17, 32.5f);
+                players[3] = new Player("p4", 17, 32.5f);
+                players[4] = new Player("p5", 17, 32.5f);
+                players[5] = new Player("p6", 17, 32.5f);
+                Team t1 = new Team("t1",players);*/
                 break;
             case 2:
 

@@ -6,15 +6,15 @@ import java.util.Arrays;
 
 public class TournamentManager
 {
-    Player[] registeredPlayer = new Player[20];
+    Player[]  registeredPlayer = new Player[20];
     Team [] registeredTeam = new Team[10];
     Tournament [] registeredTournament = new Tournament[6];
     Match [] registeredMatch = new Match[4];
 
-    int registeredPlayerIndex = 9;
-    int registeredTeamIndex = 2;
-    int registeredTournamentIndex = 2;
-    int registeredMatchIndex = 2;
+    int registeredPlayerIndex = 10;
+    int registeredTeamIndex = 3;
+    int registeredTournamentIndex = 3;
+    int registeredMatchIndex = 3;
 
     public void initialize()
     {
@@ -58,14 +58,13 @@ public class TournamentManager
         registeredMatch[2] =  new Match(registeredTournament[2],registeredPlayer[5],registeredPlayer[6]);
     }
 
-    public Player findPlayer(String username) //DUDAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public Player findPlayer(String username)
     {
 
-        for(int i=0;i<registeredPlayer.length;i++)
+        for(int i=0;i<registeredPlayerIndex;i++)
         {
             if(registeredPlayer[i].getName().equals(username))
             {
-
                 return registeredPlayer[i];
             }
         }
@@ -107,10 +106,11 @@ public class TournamentManager
 
     public void addPlayer(Player player) {
 
-        registeredPlayerIndex++;
+
         if(registeredPlayerIndex < registeredPlayer.length)
         {
             registeredPlayer[registeredPlayerIndex] = player;
+            registeredPlayerIndex++;
         }
         else
         {
@@ -124,10 +124,11 @@ public class TournamentManager
     }
 
     public void addTeam(Team team) {
-        registeredTeamIndex++;
+
         if(registeredTeamIndex < registeredTeam.length)
         {
             registeredTeam[registeredTeamIndex] = team;
+            registeredTeamIndex++;
         }
         else
         {
@@ -140,10 +141,11 @@ public class TournamentManager
     }
 
     public void addTournament(Tournament tournament) {
-        registeredTournamentIndex++;
+
         if(registeredTournamentIndex < registeredTournament.length)
         {
             registeredTournament[registeredTournamentIndex] = tournament;
+            registeredTournamentIndex++;
         }
         else
         {
@@ -156,10 +158,11 @@ public class TournamentManager
     }
 
     public void addMatch(Match match) {
-        registeredMatchIndex++;
+
         if(registeredMatchIndex < registeredMatch.length)
         {
             registeredMatch[registeredMatchIndex] = match;
+            registeredMatchIndex++;
         }
         else
         {
