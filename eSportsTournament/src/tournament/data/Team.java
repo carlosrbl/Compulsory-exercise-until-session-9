@@ -21,9 +21,9 @@ public class Team extends Participant{
         try {
             ExceptionTeamPlayer.quantityOfPlayers(players);
         }
-        catch (InterruptedException e)
+        catch (IndexOutOfBoundsException e)
         {
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
         this.players = players;
     }
@@ -36,7 +36,6 @@ public class Team extends Participant{
             if (players[i] != null)
             {
                 count++;
-                //comentario de prueba
             }
         }
         return count;
