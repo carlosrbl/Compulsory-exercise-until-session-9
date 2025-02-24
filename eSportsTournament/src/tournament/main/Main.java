@@ -72,7 +72,7 @@ public class Main
                 break;
             case 8:
 
-                break;
+            break;
             case 9:
 
                 break;
