@@ -2,7 +2,6 @@ package tournament.main;
 
 import tournament.data.Player;
 import tournament.data.Team;
-import tournament.exceptions.GameModeException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
