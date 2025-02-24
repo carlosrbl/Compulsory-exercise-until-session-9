@@ -2,13 +2,15 @@ package tournament.main;
 
 import tournament.data.Player;
 import tournament.data.Team;
+import tournament.data.Tournament;
+import tournament.exceptions.FullTeamException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main
 {
-    public static boolean showMenu()
+    public static boolean showMenu(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
@@ -32,7 +34,7 @@ public class Main
             {
                 int choice = sc.nextInt();
                 validInput = true;
-                exit = play(choice);
+                exit = play(choice,tournamentManager);
             }
             catch (InputMismatchException e)
             {
@@ -47,8 +49,53 @@ public class Main
         }
         return exit;
     }
-    public static boolean play(int choice)
+    public static void CreatePlayer(TournamentManager tournamentManager)
     {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter player name: ");
+        String playerName = sc.nextLine();
+        System.out.print("Enter level of the player: ");
+        int playerLevel = sc.nextInt();
+        System.out.print("Enter rank of the player: ");
+        float playerRank = sc.nextFloat();
+
+        Player player = new Player(playerName,playerLevel,playerRank);
+
+        AddPlayerToTeam(tournamentManager,player);
+
+    }
+
+    public static void AddPlayerToTeam(TournamentManager tournamentManager, Player player)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter team name: ");
+        String teamName = sc.nextLine();
+        for(int i = 0;i< tournamentManager.registeredTeamIndex;i++)
+        {
+            if(tournamentManager.registeredTeam[i].getName().equalsIgnoreCase(teamName))
+            {
+                tournamentManager.addPlayer(player);
+
+                try
+                {
+                    tournamentManager.registeredTeam[i].addPlayer(player);
+                }
+                catch (FullTeamException e)
+                {
+                    System.err.println(e.getMessage());
+                }
+
+
+            }
+
+        }
+
+    }
+
+    public static boolean play(int choice, TournamentManager tournamentManager)
+    {
+        Scanner sc = new Scanner(System.in);
         boolean exit = false;
         switch(choice)
         {
@@ -62,6 +109,8 @@ public class Main
 
                 break;
             case 4:
+
+                CreatePlayer(tournamentManager);
 
                 break;
             case 5:
@@ -90,14 +139,13 @@ public class Main
         }
         return exit;
     }
-
-
     public static void main(String[] args)
     {
         boolean exit = false;
+        TournamentManager tournamentManager = new TournamentManager();
         while(!exit)
         {
-            exit = showMenu();
+            exit = showMenu(tournamentManager);
         }
     }
 }
