@@ -5,7 +5,7 @@ public class Team extends Participant{
     float averageTeamRanking;
     public Team(String name, Player[] players) {
         super(name);
-        comprovePlayers(players);
+        this.players = players;
     }
 
     public Player[] getPlayers() {
@@ -16,17 +16,6 @@ public class Team extends Participant{
         this.players = players;
     }
 
-    public void comprovePlayers (Player[] players)
-    {
-        try {
-            ExceptionTeamPlayer.quantityOfPlayers(players);
-        }
-        catch (IndexOutOfBoundsException e)
-        {
-            System.err.println(e.getMessage());
-        }
-        this.players = players;
-    }
 
     public int numberOfMembers()
     {
@@ -68,6 +57,19 @@ public class Team extends Participant{
         averageTeamRanking = average/numberOfMembers();
         return averageTeamRanking;
     }
+
+    public void addPlayer(Player p) throws FullTeamException
+    {
+        if (players.length <= 5)
+        {
+            throw new FullTeamException("The number of players are minimum 2 and maximum 5");
+        }
+        else
+        {
+            players[numberOfMembers()] = p;
+        }
+    }
+
     @Override
     public String toString()
     {
