@@ -61,12 +61,12 @@ public class Team extends Participant{
     public float getAverageTeamRanking()
     {
         float average=0;
-        for(int i=0;i< players.length;i++)
+        for(int i=0;i< numberOfMembers();i++)
         {
             average+=players[i].getRanking();
         }
 
-        averageTeamRanking = average/players.length;
+        averageTeamRanking = average/numberOfMembers();
         return averageTeamRanking;
     }
     @Override
