@@ -2,14 +2,13 @@ package tournament.main;
 
 import tournament.data.Player;
 import tournament.data.Team;
-import tournament.data.Tournament;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main
 {
-    public static boolean showMenu(TournamentManager tournamentManager)
+    public static boolean showMenu()
     {
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
@@ -33,7 +32,7 @@ public class Main
             {
                 int choice = sc.nextInt();
                 validInput = true;
-                exit = play(choice,tournamentManager);
+                exit = play(choice);
             }
             catch (InputMismatchException e)
             {
@@ -48,9 +47,8 @@ public class Main
         }
         return exit;
     }
-    public static boolean play(int choice, TournamentManager tournamentManager)
+    public static boolean play(int choice)
     {
-        Scanner sc = new Scanner(System.in);
         boolean exit = false;
         switch(choice)
         {
@@ -92,13 +90,14 @@ public class Main
         }
         return exit;
     }
+
+
     public static void main(String[] args)
     {
         boolean exit = false;
-        TournamentManager tournamentManager = new TournamentManager();
         while(!exit)
         {
-            exit = showMenu(tournamentManager);
+            exit = showMenu();
         }
     }
 }

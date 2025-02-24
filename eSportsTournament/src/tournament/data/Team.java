@@ -1,8 +1,8 @@
 package tournament.data;
 import tournament.exceptions.*;
 public class Team extends Participant{
-    Player[] players;
-    float averageTeamRanking;
+    private Player[] players;
+    private float averageTeamRanking;
     public Team(String name, Player[] players) {
         super(name);
         this.players = players;
