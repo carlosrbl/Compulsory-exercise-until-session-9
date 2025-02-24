@@ -7,9 +7,9 @@ import java.util.Arrays;
 public class TournamentManager
 {
     Player[]  registeredPlayer = new Player[20];
-    Team [] registeredTeam = new Team[10];
-    Tournament [] registeredTournament = new Tournament[6];
-    Match [] registeredMatch = new Match[4];
+    Team[] registeredTeam = new Team[10];
+    Tournament[] registeredTournament = new Tournament[6];
+    Match[] registeredMatch = new Match[4];
 
     int registeredPlayerIndex = 10;
     int registeredTeamIndex = 3;
@@ -87,17 +87,6 @@ public class TournamentManager
         {
             System.out.println(registeredTournament[i].toString());
         }
-    }
-    public void showPlayerRanking() {
-        Arrays.sort(registeredPlayer, (a, b) -> Float.compare(a.getRanking(), b.getRanking()));
-        for (int i = 0; i < registeredTournament.length; i++)
-        {
-            System.out.println(registeredTournament[i].toString());
-        }
-    }
-    public void showTeamRanking()
-    {
-        Arrays.sort(registeredTeam,(a,b)->Float.compare(a.getAverageTeamRanking(),b.getAverageTeamRanking()));
     }
 
     public Player[] getRegisteredPlayer() {
