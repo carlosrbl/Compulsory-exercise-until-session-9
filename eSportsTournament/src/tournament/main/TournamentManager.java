@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class TournamentManager
 {
-    Player[] registeredPlayer = new Player[20];
+    Player[]  registeredPlayer = new Player[20];
     Team [] registeredTeam = new Team[10];
     Tournament [] registeredTournament = new Tournament[6];
     Match [] registeredMatch = new Match[4];
@@ -65,7 +65,6 @@ public class TournamentManager
         {
             if(registeredPlayer[i].getName().equals(username))
             {
-
                 return registeredPlayer[i];
             }
         }
