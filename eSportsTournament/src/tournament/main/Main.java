@@ -196,10 +196,12 @@ public class Main
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter team name: ");
         String teamName = sc.nextLine();
+        boolean encontrado = false;
         for(int i = 0;i< tournamentManager.registeredTeamIndex;i++)
         {
             if(tournamentManager.registeredTeam[i].getName().equalsIgnoreCase(teamName))
             {
+                encontrado = true;
                 tournamentManager.addPlayer(player);
 
                 try
@@ -210,17 +212,74 @@ public class Main
                 {
                     System.err.println(e.getMessage());
                 }
-
-
             }
 
         }
-
+        if(!encontrado)
+        {
+            System.out.print("Team not found");
+        }
+    }
+    public static void FindExactPlayer(TournamentManager tournamentManager)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter player name: ");
+        String playerName = sc.nextLine();
+        boolean encontrado = false;
+        for(int i = 0;i< tournamentManager.registeredPlayerIndex;i++)
+        {
+            if(tournamentManager.registeredPlayer[i].getName().equalsIgnoreCase(playerName))
+            {
+                System.out.println(tournamentManager.registeredPlayer[i]);
+                encontrado = true;
+            }
+        }
+        if(!encontrado)
+        {
+            System.out.println("Player not found");
+        }
+    }
+    public static void FindPlayer(TournamentManager tournamentManager)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter player name: ");
+        String playerName = sc.nextLine();
+        boolean encontrado = false;
+        for(int i = 0;i< tournamentManager.registeredPlayerIndex;i++)
+        {
+            if(tournamentManager.registeredPlayer[i].getName().contains(playerName))
+            {
+                System.out.println(tournamentManager.registeredPlayer[i]);
+                encontrado = true;
+            }
+        }
+        if(!encontrado)
+        {
+            System.out.println("Player not found");
+        }
+    }
+    public static void FindTeam(TournamentManager tournamentManager)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter team name: ");
+        String teamName = sc.nextLine();
+        boolean encontrado = false;
+        for(int i = 0;i< tournamentManager.registeredTeamIndex;i++)
+        {
+            if(tournamentManager.registeredTeam[i].getName().equalsIgnoreCase(teamName))
+            {
+                System.out.println(tournamentManager.registeredTeam[i]);
+                encontrado = true;
+            }
+        }
+        if(!encontrado)
+        {
+            System.out.println("Team not found");
+        }
     }
 
     public static boolean play(int choice, TournamentManager tournamentManager)
     {
-        Scanner sc = new Scanner(System.in);
         boolean exit = false;
         switch(choice)
         {
@@ -241,13 +300,13 @@ public class Main
                 System.out.println();
                 break;
             case 5:
-
+                FindExactPlayer(tournamentManager);
                 break;
             case 6:
-
+                FindPlayer(tournamentManager);
                 break;
             case 7:
-
+                FindTeam(tournamentManager);
                 break;
             case 8:
                 MatchesOrdered(tournamentManager);
@@ -271,6 +330,7 @@ public class Main
     {
         boolean exit = false;
         TournamentManager tournamentManager = new TournamentManager();
+        tournamentManager.initialize();
         while(!exit)
         {
             exit = showMenu(tournamentManager);
