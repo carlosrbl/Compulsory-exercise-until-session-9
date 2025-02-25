@@ -1,8 +1,13 @@
 package tournament.main;
 
+import tournament.comparator.PlayersInformationComparator;
+import tournament.comparator.TeamsInformationComparator;
+import tournament.comparator.TournamentComparator;
+import tournament.comparator.TournamentMatchesComparator;
 import tournament.data.*;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class TournamentManager
 {
@@ -156,6 +161,126 @@ public class TournamentManager
         else
         {
             System.out.println("There is no more space");
+        }
+    }
+    public void tournamentsOrdered()
+    {
+        //Use a class that implements Comparator
+        Arrays.sort(registeredTournament,0,registeredTournamentIndex,new TournamentComparator());
+        for (int i=0;i<registeredTournamentIndex;i++)
+        {
+            System.out.println(registeredTournament[i]);
+        }
+        System.out.println();
+        //Use an anonymous class
+        Arrays.sort(registeredTournament, 0, registeredTournamentIndex, new Comparator<Tournament>() {
+            @Override
+            public int compare(Tournament o1, Tournament o2) {
+                return o1.getName().compareToIgnoreCase(o2.getName());
+            }
+        });
+        for (int i=0;i<registeredTournamentIndex;i++)
+        {
+            System.out.println(registeredTournament[i]);
+        }
+        System.out.println();
+        //Use a lambda expression (only Mari Chelo's group)
+        Arrays.sort(registeredTournament, 0, registeredTournamentIndex,((o1, o2) ->  o1.getName().compareToIgnoreCase(o2.getName())));
+        for (int i=0;i<registeredTournamentIndex;i++)
+        {
+            System.out.println(registeredTournament[i]);
+        }
+    }
+    public void playersOrdered()
+    {
+        //Use a class that implements Comparator
+        Arrays.sort(registeredPlayer,0,registeredPlayerIndex,new PlayersInformationComparator());
+        for (int i=0;i<registeredPlayerIndex;i++)
+        {
+            System.out.println(registeredPlayer[i]);
+        }
+        System.out.println();
+        //Use an anonymous class
+        Arrays.sort(registeredPlayer, 0, registeredPlayerIndex, new Comparator<Player>() {
+            @Override
+            public int compare(Player o1, Player o2) {
+                return Float.compare(o1.getRanking(), o2.getRanking()) == 0
+                        ? o1.getName().compareToIgnoreCase(o2.getName()) :
+                        Float.compare(o1.getRanking(), o2.getRanking());
+            }
+        });
+        for (int i=0;i<registeredPlayerIndex;i++)
+        {
+            System.out.println(registeredPlayer[i]);
+        }
+        System.out.println();
+        //Use a lambda expression (only Mari Chelo's group)
+        Arrays.sort(registeredPlayer, 0, registeredPlayerIndex,
+                ((o1, o2) ->
+                        Float.compare(o1.getRanking(), o2.getRanking()) == 0
+                                ? o1.getName().compareToIgnoreCase(o2.getName()) :
+                                Float.compare(o1.getRanking(), o2.getRanking())));
+        for (int i=0;i<registeredPlayerIndex;i++)
+        {
+            System.out.println(registeredPlayer[i]);
+        }
+    }
+    public void teamsOrdered()
+    {
+        //Use a class that implements Comparator
+        Arrays.sort(registeredTeam,0,registeredTeamIndex,new TeamsInformationComparator());
+        for (int i=0;i<registeredTeamIndex;i++)
+        {
+            System.out.println(registeredTeam[i]);
+        }
+        System.out.println();
+        //Use an anonymous class
+        Arrays.sort(registeredTeam, 0, registeredTeamIndex, new Comparator<Team>() {
+            @Override
+            public int compare(Team o1, Team o2) {
+                return Float.compare(o1.getAverageTeamRanking(), o2.getAverageTeamRanking());
+            }
+        });
+        for (int i=0;i<registeredTeamIndex;i++)
+        {
+            System.out.println(registeredTeam[i]);
+        }
+        System.out.println();
+        //Use a lambda expression (only Mari Chelo's group)
+        Arrays.sort(registeredTeam, 0, registeredTeamIndex,((o1, o2) ->
+                Float.compare(o1.getAverageTeamRanking(), o2.getAverageTeamRanking())));
+        for (int i=0;i<registeredTeamIndex;i++)
+        {
+            System.out.println(registeredTeam[i]);
+        }
+    }
+    public void matchesOrdered()
+    {
+        //Use a class that implements Comparator
+        Arrays.sort(registeredMatch,0,registeredMatchIndex,new TournamentMatchesComparator());
+        for (int i=0;i<registeredMatchIndex;i++)
+        {
+            System.out.println(registeredMatch[i]);
+        }
+        System.out.println();
+        //Use an anonymous class
+        Arrays.sort(registeredMatch, 0, registeredMatchIndex, new Comparator<Match>() {
+            @Override
+            public int compare(Match o1, Match o2) {
+                return o1.getTournament().getName().compareToIgnoreCase(o2.getTournament().getName());
+            }
+        });
+        for (int i=0;i<registeredMatchIndex;i++)
+        {
+            System.out.println(registeredMatch[i]);
+        }
+        System.out.println();
+        //Use a lambda expression (only Mari Chelo's group)
+        Arrays.sort(registeredMatch, 0, registeredMatchIndex,((o1, o2) ->
+                o1.getTournament().getName().compareToIgnoreCase(o2.getTournament().getName())));
+        for (int i=0;i<registeredMatchIndex;i++)
+        {
+            System.out.println(registeredMatch[i]);
         }
     }
 }
