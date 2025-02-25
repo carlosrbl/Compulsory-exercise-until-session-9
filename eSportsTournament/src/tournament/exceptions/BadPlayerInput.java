@@ -29,15 +29,4 @@ public class BadPlayerInput extends Exception
         }
         return level;
     }
-
-    /*public static float comprovePlayerRank (float rank) throws BadPlayerInput
-    {
-        String rankString = Parse;
-        char[] numbers = {'1','2','3','4','5','6','7','8','9','0','.'};
-        for (int i=0;i<numbers.length;i++)
-        {
-            for (int i=0;)
-            throw new BadPlayerInput("The player name doesn't have to have numbers");
-        }
-    }*/
 }
