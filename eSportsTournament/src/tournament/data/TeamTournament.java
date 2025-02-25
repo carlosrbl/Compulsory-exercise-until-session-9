@@ -4,14 +4,15 @@ public class TeamTournament extends Tournament
 {
     private int playersPerTeam;
 
-    public TeamTournament(String name, String game, double price, int playersPerTeam)
+    public TeamTournament(String name, String game, double prize, int playersPerTeam)
     {
-        super(name, game, price);
+        super(name, game, prize);
         this.playersPerTeam = playersPerTeam;
     }
 
     @Override
     public String toString() {
+        return "Tournament - " + name + " (" + game + ") - Prize: " + prize + "€";
         return super.toString() + "People: " + playersPerTeam;
     }
 

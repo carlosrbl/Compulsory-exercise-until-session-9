@@ -4,18 +4,18 @@ public abstract class Tournament
 {
     protected String name;
     protected String game;
-    protected double price;
+    protected double prize;
 
-    public Tournament(String name, String game, double price)
+    public Tournament(String name, String game, double prize)
     {
         this.name = name;
         this.game = game;
-        this.price = price;
+        this.prize = prize;
     }
 
     @Override
     public String toString() {
-        return "Tournament " + name + " (" + game + ") , Price: " + price + "€";
+        return "Tournament - " + name + " (" + game + ") - Prize: " + prize + "€";
     }
 
     public String getName()
@@ -38,13 +38,13 @@ public abstract class Tournament
         this.game = game;
     }
 
-    public double getPrice()
+    public double getPrize()
     {
-        return price;
+        return prize;
     }
 
-    public void setPrice(double price)
+    public void setPrize(double prize)
     {
-        this.price = price;
+        this.prize = prize;
     }
 }
