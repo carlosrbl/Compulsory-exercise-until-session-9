@@ -234,7 +234,7 @@ public class Main
                 System.out.println();
                 break;
             case 4:
-                CreatePlayer(tournamentManager);
+                createPlayer(tournamentManager);
                 System.out.println();
                 break;
             case 5:
