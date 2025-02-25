@@ -73,7 +73,7 @@ public class Team extends Participant{
     @Override
     public String toString()
     {
-        return super.toString()+" - "+"Members: "+numberOfMembers()+"/"
-                +players.length+":"+showPlayers();
+        return "Team " + super.toString() + " - " + "Members: " + numberOfMembers()+"/"
+                + players.length + ": " +showPlayers();
     }
 }
