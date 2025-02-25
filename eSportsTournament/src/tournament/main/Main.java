@@ -54,11 +54,12 @@ public class Main
         }
         return exit;
     }
-    public static void CreatePlayer(TournamentManager tournamentManager)
+    public static void createPlayer(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
         String playerName = "";
         int playerLevel = 0;
+        float playerRank = 0;
         try
         {
             System.out.print("Enter player name: ");
@@ -69,7 +70,7 @@ public class Main
         catch (BadPlayerInput e)
         {
             System.err.println(e.getMessage());
-            CreatePlayer(tournamentManager);
+            createPlayer(tournamentManager);
         }
 
         try
@@ -81,10 +82,20 @@ public class Main
         catch (BadPlayerInput e)
         {
             System.err.println(e.getMessage());
+            createPlayer(tournamentManager);
         }
 
-        System.out.print("Enter rank of the player: ");
-        float playerRank = sc.nextFloat();
+        try
+        {
+            System.out.print("Enter rank of the player: ");
+            String rank = sc.next();
+            playerRank = Float.parseFloat(rank);
+        }
+        catch (NumberFormatException e)
+        {
+            System.err.println(e.getMessage());
+            createPlayer(tournamentManager);
+        }
 
         Player player = new Player(playerName,playerLevel,playerRank);
 
@@ -166,7 +177,7 @@ public class Main
         boolean encontrado = false;
         for(int i = 0;i< tournamentManager.registeredTeamIndex;i++)
         {
-            if(tournamentManager.registeredTeam[i].getName().equalsIgnoreCase(teamName))
+            if(tournamentManager.registeredTeam[i].getName().contains(teamName))
             {
                 System.out.println(tournamentManager.registeredTeam[i]);
                 encontrado = true;
