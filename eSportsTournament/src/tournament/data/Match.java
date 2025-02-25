@@ -56,7 +56,7 @@ public class Match
 
     @Override
     public String toString() {
-        return tournament.toString() + " -" + participant1.getName() + participant2.getName() + "-" + "Result:" + result;
+        return tournament.toString() + " - " + participant1.getName() + " vs. "+ participant2.getName() + " - " + "Result: " + result;
     }
 
 
