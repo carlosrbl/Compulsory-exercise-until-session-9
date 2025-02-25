@@ -54,127 +54,6 @@ public class Main
         }
         return exit;
     }
-    public static void TournamentsOrdered(TournamentManager tournamentManager)
-    {
-        //Use a class that implements Comparator
-        Arrays.sort(tournamentManager.getRegisteredTournament(),new TournamentComparator());
-        for (Tournament tournament : tournamentManager.getRegisteredTournament())
-        {
-            System.out.println(tournament);
-        }
-        System.out.println();
-        //Use an anonymous class
-        Arrays.sort(tournamentManager.getRegisteredTournament(),new Comparator<Tournament>()
-        {
-            @Override
-            public int compare(Tournament o1, Tournament o2) {
-                return o1.getName().compareToIgnoreCase(o2.getName());
-            }
-        });
-        for (Tournament tournament : tournamentManager.getRegisteredTournament())
-        {
-            System.out.println(tournament);
-        }
-        System.out.println();
-        //Use a lambda expression (only Mari Chelo's group)
-        Arrays.sort(tournamentManager.getRegisteredTournament(),((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName())));
-        for (Tournament tournament : tournamentManager.getRegisteredTournament())
-        {
-            System.out.println(tournament);
-        }
-    }
-    public static void PlayersOrdered(TournamentManager tournamentManager)
-    {
-        //Use a class that implements Comparator
-        Arrays.sort(tournamentManager.getRegisteredPlayer(),new PlayersInformationComparator());
-        for (Player player : tournamentManager.getRegisteredPlayer())
-        {
-            System.out.println(player);
-        }
-        System.out.println();
-        //Use an anonymous class
-        Arrays.sort(tournamentManager.getRegisteredPlayer(), new Comparator<Player>()
-        {
-            @Override
-            public int compare(Player o1, Player o2) {
-                return Float.compare(o1.getRanking(), o2.getRanking()) == 0
-                        ? o1.getName().compareToIgnoreCase(o2.getName()) :
-                        Float.compare(o1.getRanking(), o2.getRanking());
-            }
-        });
-        for (Player player : tournamentManager.getRegisteredPlayer())
-        {
-            System.out.println(player);
-        }
-        System.out.println();
-        //Use a lambda expression (only Mari Chelo's group)
-        Arrays.sort(tournamentManager.getRegisteredPlayer(),((o1, o2) ->
-                Float.compare(o1.getRanking(), o2.getRanking()) == 0
-                        ? o1.getName().compareToIgnoreCase(o2.getName()) :
-                        Float.compare(o1.getRanking(), o2.getRanking())));
-        for (Player player : tournamentManager.getRegisteredPlayer())
-        {
-            System.out.println(player);
-        }
-    }
-    public static void TeamsOrdered(TournamentManager tournamentManager)
-    {
-        //Use a class that implements Comparator
-        Arrays.sort(tournamentManager.getRegisteredTeam(),new TeamsInformationComparator());
-        for (Team team : tournamentManager.getRegisteredTeam())
-        {
-            System.out.println(team);
-        }
-        System.out.println();
-        //Use an anonymous class
-        Arrays.sort(tournamentManager.getRegisteredTeam(), new Comparator<Team>()
-        {
-            @Override
-            public int compare(Team o1, Team o2) {
-                return Float.compare(o1.getAverageTeamRanking(), o2.getAverageTeamRanking());
-            }
-        });
-        for (Team team : tournamentManager.getRegisteredTeam())
-        {
-            System.out.println(team);
-        }
-        System.out.println();
-        //Use a lambda expression (only Mari Chelo's group)
-        Arrays.sort(tournamentManager.getRegisteredTeam(),((o1, o2) ->  Float.compare(o1.getAverageTeamRanking(), o2.getAverageTeamRanking())));
-        for (Team team : tournamentManager.getRegisteredTeam())
-        {
-            System.out.println(team);
-        }
-    }
-    public static void MatchesOrdered(TournamentManager tournamentManager)
-    {
-        //Use a class that implements Comparator
-        Arrays.sort(tournamentManager.getRegisteredMatch(),new TournamentMatchesComparator());
-        for (Match match : tournamentManager.getRegisteredMatch())
-        {
-            System.out.println(match);
-        }
-        System.out.println();
-        //Use an anonymous class
-        Arrays.sort(tournamentManager.getRegisteredMatch(), new Comparator<Match>()
-        {
-            @Override
-            public int compare(Match o1, Match o2) {
-                return o1.getTournament().getName().compareToIgnoreCase(o2.getTournament().getName());
-            }
-        });
-        for (Match match : tournamentManager.getRegisteredMatch())
-        {
-            System.out.println(match);
-        }
-        System.out.println();
-        //Use a lambda expression (only Mari Chelo's group)
-        Arrays.sort(tournamentManager.getRegisteredMatch(),((o1, o2) -> o1.getTournament().getName().compareToIgnoreCase(o2.getTournament().getName())));
-        for (Match match : tournamentManager.getRegisteredMatch())
-        {
-            System.out.println(match);
-        }
-    }
     public static void CreatePlayer(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
@@ -332,15 +211,15 @@ public class Main
         switch(choice)
         {
             case 1:
-                TournamentsOrdered(tournamentManager);
+                tournamentManager.tournamentsOrdered();
                 System.out.println();
                 break;
             case 2:
-                PlayersOrdered(tournamentManager);
+                tournamentManager.playersOrdered();
                 System.out.println();
                 break;
             case 3:
-                TeamsOrdered(tournamentManager);
+                tournamentManager.teamsOrdered();
                 System.out.println();
                 break;
             case 4:
@@ -360,7 +239,7 @@ public class Main
                 System.out.println();
                 break;
             case 8:
-                MatchesOrdered(tournamentManager);
+                tournamentManager.matchesOrdered();
                 System.out.println();
                 break;
             case 9:
