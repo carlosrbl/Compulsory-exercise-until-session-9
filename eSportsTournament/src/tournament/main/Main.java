@@ -8,6 +8,7 @@ import tournament.data.Match;
 import tournament.data.Player;
 import tournament.data.Team;
 import tournament.data.Tournament;
+import tournament.exceptions.BadPlayerInput;
 import tournament.exceptions.FullTeamException;
 
 import java.util.*;
@@ -177,18 +178,38 @@ public class Main
     public static void CreatePlayer(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
+        String playerName = "";
+        int playerLevel = 0;
+        try
+        {
+            System.out.print("Enter player name: ");
+            playerName = sc.nextLine();
 
-        System.out.print("Enter player name: ");
-        String playerName = sc.nextLine();
-        System.out.print("Enter level of the player: ");
-        int playerLevel = sc.nextInt();
+            BadPlayerInput.comproveName(playerName);
+        }
+        catch (BadPlayerInput e)
+        {
+            System.err.println(e.getMessage());
+            CreatePlayer(tournamentManager);
+        }
+
+        try
+        {
+            System.out.print("Enter level of the player: ");
+            playerLevel = sc.nextInt();
+            BadPlayerInput.comprovePlayerLevel(playerLevel);
+        }
+        catch (BadPlayerInput e)
+        {
+            System.err.println(e.getMessage());
+        }
+
         System.out.print("Enter rank of the player: ");
         float playerRank = sc.nextFloat();
 
         Player player = new Player(playerName,playerLevel,playerRank);
 
         AddPlayerToTeam(tournamentManager,player);
-
     }
 
     public static void AddPlayerToTeam(TournamentManager tournamentManager, Player player)
@@ -277,6 +298,33 @@ public class Main
             System.out.println("Team not found");
         }
     }
+    public static void inputResult(TournamentManager tournamentManager)
+    {
+        Scanner sc = new Scanner(System.in);
+        boolean found = false;
+        for(int i = 0;i< tournamentManager.registeredMatchIndex;i++)
+        {
+            System.out.println(tournamentManager.registeredMatch[i]);
+        }
+        System.out.print("Tell me the name of the match that you want to update the result: ");
+        String findMatch = sc.nextLine();
+        for(int i = 0;i< tournamentManager.registeredMatchIndex && !found;i++)
+        {
+            if(tournamentManager.registeredMatch[i].getTournament().getName().equalsIgnoreCase(findMatch))
+            {
+                System.out.print("Tell me how you want to update the result: ");
+                String changeResult = sc.nextLine();
+                tournamentManager.registeredMatch[i].setResult(changeResult);
+                System.out.println(tournamentManager.registeredMatch[i]);
+                found = true;
+            }
+
+        }
+        if(!found)
+        {
+            System.out.println("No match found");
+        }
+    }
 
     public static boolean play(int choice, TournamentManager tournamentManager)
     {
@@ -316,7 +364,7 @@ public class Main
                 System.out.println();
                 break;
             case 9:
-
+                inputResult(tournamentManager);
                 System.out.println();
                 break;
             case 10:
