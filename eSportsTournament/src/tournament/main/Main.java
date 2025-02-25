@@ -277,6 +277,33 @@ public class Main
             System.out.println("Team not found");
         }
     }
+    public static void inputResult(TournamentManager tournamentManager)
+    {
+        Scanner sc = new Scanner(System.in);
+        boolean found = false;
+        for(int i = 0;i< tournamentManager.registeredMatchIndex;i++)
+        {
+            System.out.println(tournamentManager.registeredMatch[i]);
+        }
+        System.out.print("Tell me the name of the match that you want to update the result: ");
+        String findMatch = sc.nextLine();
+        for(int i = 0;i< tournamentManager.registeredMatchIndex && !found;i++)
+        {
+            if(tournamentManager.registeredMatch[i].getTournament().getName().equalsIgnoreCase(findMatch))
+            {
+                System.out.print("Tell me how you want to update the result: ");
+                String changeResult = sc.nextLine();
+                tournamentManager.registeredMatch[i].setResult(changeResult);
+                System.out.println(tournamentManager.registeredMatch[i]);
+                found = true;
+            }
+
+        }
+        if(!found)
+        {
+            System.out.println("No match found");
+        }
+    }
 
     public static boolean play(int choice, TournamentManager tournamentManager)
     {
@@ -316,7 +343,7 @@ public class Main
                 System.out.println();
                 break;
             case 9:
-
+                inputResult(tournamentManager);
                 System.out.println();
                 break;
             case 10:
