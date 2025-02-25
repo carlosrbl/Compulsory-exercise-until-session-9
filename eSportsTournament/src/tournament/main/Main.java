@@ -166,7 +166,7 @@ public class Main
         boolean encontrado = false;
         for(int i = 0;i< tournamentManager.registeredTeamIndex;i++)
         {
-            if(tournamentManager.registeredTeam[i].getName().equalsIgnoreCase(teamName))
+            if(tournamentManager.registeredTeam[i].getName().contains(teamName))
             {
                 System.out.println(tournamentManager.registeredTeam[i]);
                 encontrado = true;
