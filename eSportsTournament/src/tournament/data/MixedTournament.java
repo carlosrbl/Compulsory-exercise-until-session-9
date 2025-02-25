@@ -6,9 +6,9 @@ public class MixedTournament extends Tournament
 {
     private String gameMode;
 
-    public MixedTournament(String name, String game, double price, String gameMode)
+    public MixedTournament(String name, String game, double prize, String gameMode)
     {
-        super(name, game, price);
+        super(name, game, prize);
         this.gameMode = gameMode;
     }
 
@@ -26,7 +26,7 @@ public class MixedTournament extends Tournament
 
     @Override
     public String toString() {
-        return super.toString() + "GameMode: " + gameMode;
+        return "Mixed" + super.toString() + " - GameMode: " + gameMode;
     }
 
     public String getGameMode()
