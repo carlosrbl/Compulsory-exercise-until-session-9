@@ -8,6 +8,7 @@ import tournament.data.Match;
 import tournament.data.Player;
 import tournament.data.Team;
 import tournament.data.Tournament;
+import tournament.exceptions.BadPlayerInput;
 import tournament.exceptions.FullTeamException;
 
 import java.util.*;
@@ -177,18 +178,38 @@ public class Main
     public static void CreatePlayer(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
+        String playerName = "";
+        int playerLevel = 0;
+        try
+        {
+            System.out.print("Enter player name: ");
+            playerName = sc.nextLine();
 
-        System.out.print("Enter player name: ");
-        String playerName = sc.nextLine();
-        System.out.print("Enter level of the player: ");
-        int playerLevel = sc.nextInt();
+            BadPlayerInput.comproveName(playerName);
+        }
+        catch (BadPlayerInput e)
+        {
+            System.err.println(e.getMessage());
+            CreatePlayer(tournamentManager);
+        }
+
+        try
+        {
+            System.out.print("Enter level of the player: ");
+            playerLevel = sc.nextInt();
+            BadPlayerInput.comprovePlayerLevel(playerLevel);
+        }
+        catch (BadPlayerInput e)
+        {
+            System.err.println(e.getMessage());
+        }
+
         System.out.print("Enter rank of the player: ");
         float playerRank = sc.nextFloat();
 
         Player player = new Player(playerName,playerLevel,playerRank);
 
         AddPlayerToTeam(tournamentManager,player);
-
     }
 
     public static void AddPlayerToTeam(TournamentManager tournamentManager, Player player)
