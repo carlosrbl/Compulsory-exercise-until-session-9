@@ -26,7 +26,7 @@ public class MixedTournament extends Tournament
 
     @Override
     public String toString() {
-        return "TeamTournament " + name + " (" + game + ") - GameMode: " + gameMode + " - Price: " + price +"€";
+        return super.toString() + "GameMode: " + gameMode;
     }
 
     public String getGameMode()

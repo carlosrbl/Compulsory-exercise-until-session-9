@@ -12,7 +12,7 @@ public class TeamTournament extends Tournament
 
     @Override
     public String toString() {
-        return "TeamTournament " + name + " (" + game + ") - People: " + playersPerTeam + " - Price: " + price +"€";
+        return super.toString() + "People: " + playersPerTeam;
     }
 
     public int getPlayersPerTeam()

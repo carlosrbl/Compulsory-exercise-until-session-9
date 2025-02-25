@@ -6,10 +6,4 @@ public class IndividualTournament extends Tournament
     {
         super(name, game, price);
     }
-
-    @Override
-    public String toString()
-    {
-        return "IndividualTournament " + name + " (" + game + ") - Price: " + price +"€";
-    }
 }
