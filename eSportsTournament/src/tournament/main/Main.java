@@ -59,6 +59,7 @@ public class Main
         Scanner sc = new Scanner(System.in);
         String playerName = "";
         int playerLevel = 0;
+        String playerLevelString = "";
         int playerRank = 0;
         try
         {
@@ -74,15 +75,26 @@ public class Main
             createPlayer(tournamentManager);
         }
 
+
         try
         {
             System.out.print("Enter level of the player: ");
-            playerLevel = sc.nextInt();
-            BadPlayerInput.comprovePlayerLevel(playerLevel);
+            playerLevelString = sc.nextLine();
+            playerLevel = Integer.parseInt(playerLevelString);
+            try
+            {
+                BadPlayerInput.comprovePlayerLevel(playerLevel);
+            }
+            catch (BadPlayerInput e)
+            {
+                System.err.println(e.getMessage());
+                System.out.println();
+                createPlayer(tournamentManager);
+            }
         }
-        catch (BadPlayerInput e)
+        catch (NumberFormatException e)
         {
-            System.err.println(e.getMessage());
+            System.err.println("The level has to be a number");
             System.out.println();
             createPlayer(tournamentManager);
         }
@@ -92,7 +104,8 @@ public class Main
             System.out.print("Enter rank of the player: ");
             String rank = sc.next();
             playerRank = Integer.parseInt(rank);
-            try {
+            try
+            {
                 BadPlayerInput.comprovePlayerLevel(playerRank);
             }
             catch (BadPlayerInput e)
@@ -104,7 +117,7 @@ public class Main
         }
         catch (NumberFormatException e)
         {
-            System.err.println(e.getMessage());
+            System.err.println("The level has to be a number.");
             System.out.println();
             createPlayer(tournamentManager);
         }
@@ -220,7 +233,6 @@ public class Main
                 System.out.println(tournamentManager.registeredMatch[i]);
                 found = true;
             }
-
         }
         if(!found)
         {
