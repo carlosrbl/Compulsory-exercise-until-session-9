@@ -59,7 +59,7 @@ public class Main
         Scanner sc = new Scanner(System.in);
         String playerName = "";
         int playerLevel = 0;
-        float playerRank = 0;
+        int playerRank = 0;
         try
         {
             System.out.print("Enter player name: ");
@@ -70,6 +70,7 @@ public class Main
         catch (BadPlayerInput e)
         {
             System.err.println(e.getMessage());
+            System.out.println();
             createPlayer(tournamentManager);
         }
 
@@ -82,6 +83,7 @@ public class Main
         catch (BadPlayerInput e)
         {
             System.err.println(e.getMessage());
+            System.out.println();
             createPlayer(tournamentManager);
         }
 
@@ -89,11 +91,21 @@ public class Main
         {
             System.out.print("Enter rank of the player: ");
             String rank = sc.next();
-            playerRank = Float.parseFloat(rank);
+            playerRank = Integer.parseInt(rank);
+            try {
+                BadPlayerInput.comprovePlayerLevel(playerRank);
+            }
+            catch (BadPlayerInput e)
+            {
+                System.err.println(e.getMessage());
+                System.out.println();
+                createPlayer(tournamentManager);
+            }
         }
         catch (NumberFormatException e)
         {
             System.err.println(e.getMessage());
+            System.out.println();
             createPlayer(tournamentManager);
         }
 
