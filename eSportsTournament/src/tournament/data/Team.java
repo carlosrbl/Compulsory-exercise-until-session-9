@@ -41,7 +41,7 @@ public class Team extends Participant{
             }
             else
             {
-                allPlayers += players[i]+"-";
+                allPlayers += players[i]+" - ";
             }
         }
         return allPlayers;
