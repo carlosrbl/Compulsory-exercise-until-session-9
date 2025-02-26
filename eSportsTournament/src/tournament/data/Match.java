@@ -5,13 +5,14 @@ public class Match
     private Tournament tournament;
     private Player participant1;
     private Player participant2;
-    private String result = "Pending";
+    private String result;
 
     public Match(Tournament tournament,Player participant1,Player participant2)
     {
         this.tournament = tournament;
         this.participant1 = participant1;
         this.participant2 = participant2;
+        result = "Pending";
     }
 
     public Tournament getTournament()
@@ -56,7 +57,7 @@ public class Match
 
     @Override
     public String toString() {
-        return tournament.toString() + " - " + participant1.getName() + " vs. "+ participant2.getName() + " - " + "Result: " + result;
+        return tournament.getName() + " - " + participant1.getName() + " vs. "+ participant2.getName() + " - " + "Result: " + result;
     }
 
 
