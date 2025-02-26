@@ -51,9 +51,9 @@ public class TournamentManager
     }
     public void initializeTournament()
     {
-        registeredTournament[0] = new TeamTournament("Team Tournament","League Of Legends",1000,4);
-        registeredTournament[1] = new IndividualTournament("Individual Tournament","Splatoon",2000);
-        registeredTournament[2] = new MixedTournament("Mixed Tournament","StarCraft2",5000,"1v1");
+        registeredTournament[0] = new TeamTournament("LOL tournament","League Of Legends",1000,4);
+        registeredTournament[1] = new IndividualTournament("Splatton vs Inklings","Splatoon",2000);
+        registeredTournament[2] = new MixedTournament("War of craft","StarCraft2",5000,"1v1");
 
     }
     public void initializeMatch()

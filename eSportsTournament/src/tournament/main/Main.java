@@ -59,6 +59,7 @@ public class Main
         Scanner sc = new Scanner(System.in);
         String playerName = "";
         int playerLevel = 0;
+        String playerLevelString = "";
         float playerRank = 0;
         try
         {
@@ -76,12 +77,23 @@ public class Main
         try
         {
             System.out.print("Enter level of the player: ");
-            playerLevel = sc.nextInt();
-            BadPlayerInput.comprovePlayerLevel(playerLevel);
+            playerLevelString = sc.nextLine();
+            playerLevel = Integer.parseInt(playerLevelString);
+            try
+            {
+                BadPlayerInput.comprovePlayerLevel(playerLevel);
+
+            }
+            catch (BadPlayerInput e)
+            {
+                System.err.println(e.getMessage());
+                System.out.println();
+                createPlayer(tournamentManager);
+            }
         }
-        catch (BadPlayerInput e)
+        catch (NumberFormatException e)
         {
-            System.err.println(e.getMessage());
+            System.err.println("");
             createPlayer(tournamentManager);
         }
 
@@ -194,7 +206,11 @@ public class Main
         boolean found = false;
         for(int i = 0;i< tournamentManager.registeredMatchIndex;i++)
         {
-            System.out.println(tournamentManager.registeredMatch[i]);
+            if(tournamentManager.registeredMatch[i].getResult().equalsIgnoreCase("pending"))
+            {
+                System.out.println(tournamentManager.registeredMatch[i]);
+            }
+
         }
         System.out.print("Tell me the name of the match that you want to update the result: ");
         String findMatch = sc.nextLine();
