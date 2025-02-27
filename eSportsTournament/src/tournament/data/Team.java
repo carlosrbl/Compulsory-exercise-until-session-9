@@ -60,7 +60,7 @@ public class Team extends Participant{
 
     public void addPlayer(Player p) throws FullTeamException
     {
-        if (players.length <= 5)
+        if (players.length >= 5)
         {
             throw new FullTeamException("The number of players are minimum 2 and maximum 5");
         }
