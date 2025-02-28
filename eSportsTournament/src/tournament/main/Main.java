@@ -1,5 +1,5 @@
-package tournament.main;
 
+package tournament.main;
 import tournament.comparator.PlayersInformationComparator;
 import tournament.comparator.TeamsInformationComparator;
 import tournament.comparator.TournamentComparator;

@@ -1,3 +1,9 @@
+/**
+ * @author Miguel,Adrian,Carlos
+ *
+ * This is the class that that initializes all the clases to control them,it has his own constructor and getters and setters for all his atributes
+ * and also contains his own method toString() to show all his characteristics.
+ */
 package tournament.main;
 
 import tournament.comparator.PlayersInformationComparator;
@@ -12,15 +18,36 @@ import java.util.Random;
 
 public class TournamentManager
 {
-    Player[]  registeredPlayer = new Player[20];
-    Team[] registeredTeam = new Team[10];
-    Tournament[] registeredTournament = new Tournament[6];
-    Match[] registeredMatch = new Match[4];
+    Player[]  registeredPlayer;
+    Team[] registeredTeam;
+    Tournament[] registeredTournament;
+    Match[] registeredMatch;
 
-    int registeredPlayerIndex = 10;
-    int registeredTeamIndex = 5;
-    int registeredTournamentIndex = 3;
-    int registeredMatchIndex = 3;
+    int registeredPlayerIndex;
+    int registeredTeamIndex;
+    int registeredTournamentIndex;
+    int registeredMatchIndex;
+
+    /**
+     * @return This is the constructor of the class
+     */
+
+    public TournamentManager()
+    {
+        registeredPlayer = new Player[20];
+        registeredTeam = new Team[10];
+        registeredTournament = new Tournament[6];
+        registeredMatch = new Match[5];
+
+        registeredPlayerIndex = 10;
+        registeredTeamIndex = 5;
+        registeredTournamentIndex = 3;
+        registeredMatchIndex = 3;
+    }
+
+    /**
+     * @return This method sets all the players ,teams, tournamets and matches to start to show all the request of the menu
+     */
 
     public void initialize()
     {
@@ -29,6 +56,11 @@ public class TournamentManager
         initializeTournament();
         initializeMatch();
     }
+
+    /**
+     * @return This method creates new players
+     */
+
     public void initializePlayers()
     {
         registeredPlayer[0] = new Player("Alejandro",12,453.1f);
@@ -42,6 +74,11 @@ public class TournamentManager
         registeredPlayer[8] = new Player("Andrés",88,441.1f);
         registeredPlayer[9] = new Player("Elena",4,82701.54f);
     }
+
+    /**
+     * @return This method creates new Teams
+     */
+
     public void initializeTeam()
     {
         registeredTeam[0] = new Team("Eucaliptos",new Player []{registeredPlayer[0],registeredPlayer[1]});
@@ -50,6 +87,11 @@ public class TournamentManager
         registeredTeam[3] = new Team("Los Tragaperras",new Player []{registeredPlayer[6],registeredPlayer[7]});
         registeredTeam[4] = new Team("Los Amateurs",new Player []{registeredPlayer[8],registeredPlayer[9]});
     }
+
+    /**
+     * @return This method creates new Tournaments
+     */
+
     public void initializeTournament()
     {
         registeredTournament[0] = new TeamTournament("LOL tournament","League Of Legends",1000,4);
@@ -57,14 +99,33 @@ public class TournamentManager
         registeredTournament[2] = new MixedTournament("War of craft","StarCraft2",5000,"1v1");
 
     }
+
+    /**
+     * @return This method creates new matches,but it secures that in a match you cant play with another person of the same team
+     */
+
     public void initializeMatch()
     {
         Random rand = new Random();
+        Team t1;
+        Team t2;
 
-        registeredMatch[0] = new Match(registeredTournament[0],registeredPlayer[0],registeredPlayer[1]);
-        registeredMatch[1] = new Match(registeredTournament[1],registeredPlayer[3],registeredPlayer[4]);
-        registeredMatch[2] =  new Match(registeredTournament[2],registeredPlayer[5],registeredPlayer[6]);
+        for (int i=0;i<registeredMatchIndex;i++)
+        {
+            do
+            {
+                t1 = registeredTeam[rand.nextInt(0, registeredTeamIndex)];
+                t2 = registeredTeam[rand.nextInt(0, registeredTeamIndex)];
+            }
+            while(t1.getName().equals(t2.getName()));
+            registeredMatch[i] = new Match(registeredTournament[rand.nextInt(0, registeredTournamentIndex)],
+                    t1.getPlayer(rand.nextInt(0,t1.numberOfMembers())), t2.getPlayer(rand.nextInt(0,t2.numberOfMembers())));
+        }
     }
+
+    /**
+     * @return This method find a player
+     */
 
     public Player findPlayer(String username)
     {
@@ -78,6 +139,11 @@ public class TournamentManager
         }
         return null;
     }
+
+    /**
+     * @return This method find a team
+     */
+
     public Team findTeam(String teamName)
     {
         for(int i=0;i<registeredTeam.length;i++)
@@ -89,6 +155,11 @@ public class TournamentManager
         }
         return null;
     }
+
+    /**
+     * @return This method show all the tournaments
+     */
+
     public void showTournaments()
     {
         for(int i=0;i<registeredTournament.length;i++)
@@ -97,9 +168,17 @@ public class TournamentManager
         }
     }
 
+    /**
+     * @return This function returns the players array
+     */
+
     public Player[] getRegisteredPlayer() {
         return registeredPlayer;
     }
+
+    /**
+     * @return This method add a new Player to registeredPlayer
+     */
 
     public void addPlayer(Player player) {
 
@@ -116,9 +195,17 @@ public class TournamentManager
 
     }
 
+    /**
+     * @return This method returns the players array
+     */
+
     public Team[] getRegisteredTeam() {
         return registeredTeam;
     }
+
+    /**
+     * @return This method add a new Team to registeredTeam
+     */
 
     public void addTeam(Team team) {
 
@@ -133,9 +220,17 @@ public class TournamentManager
         }
     }
 
+    /**
+     * @return This method returns the tournaments array
+     */
+
     public Tournament[] getRegisteredTournament() {
         return registeredTournament;
     }
+
+    /**
+     * @return This method add a new tournament to registeredTournament
+     */
 
     public void addTournament(Tournament tournament) {
 
@@ -150,9 +245,18 @@ public class TournamentManager
         }
     }
 
+    /**
+     * @return This method returns the matchs array
+     */
+
     public Match[] getRegisteredMatch() {
         return registeredMatch;
     }
+
+    /**
+     * @return This method add a new match to registeredMatch
+     */
+
 
     public void addMatch(Match match) {
 
@@ -166,6 +270,11 @@ public class TournamentManager
             System.out.println("There is no more space");
         }
     }
+
+    /**
+     * @return This method order the tournaments by its names in three different ways
+     */
+
     public void tournamentsOrdered()
     {
         //Use a class that implements Comparator
@@ -193,6 +302,11 @@ public class TournamentManager
         {
             System.out.println(registeredTournament[i]);
         }
+
+        /**
+         * @return This method order the player firstly by its ranking and secondly by its names in three different ways
+         */
+
     }
     public void playersOrdered()
     {
@@ -228,6 +342,11 @@ public class TournamentManager
             System.out.println(registeredPlayer[i]);
         }
     }
+
+    /**
+     * @return This method order the teams by the average ranking of the team in 3 different ways
+     */
+
     public void teamsOrdered()
     {
         //Use a class that implements Comparator
@@ -257,6 +376,11 @@ public class TournamentManager
             System.out.println(registeredTeam[i]);
         }
     }
+
+    /**
+     * @return This method order the matches by their name in 3 different ways
+     */
+
     public void matchesOrdered()
     {
         //Use a class that implements Comparator
