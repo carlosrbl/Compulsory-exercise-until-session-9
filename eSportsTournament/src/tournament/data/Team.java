@@ -5,10 +5,7 @@ public class Team extends Participant{
     private float averageTeamRanking;
     public Team(String name, Player[] players) {
         super(name);
-        for(int i = 0; i < players.length; i++)
-        {
-            this.players[i] = players[i];
-        }
+        comprovePlayers(players);
     }
 
     public Player[] getPlayers() {
@@ -19,6 +16,13 @@ public class Team extends Participant{
         this.players = players;
     }
 
+    public void comprovePlayers(Player[] players)
+    {
+        for(int i = 0; i < players.length; i++)
+        {
+            this.players[i] = players[i];
+        }
+    }
 
     public int numberOfMembers()
     {
@@ -37,15 +41,19 @@ public class Team extends Participant{
     public String showPlayers()
     {
         String allPlayers="";
-        for (int i=0;i<players.length;i++)
+        for (int i=0;i<numberOfMembers();i++)
         {
-            if (i== players.length-1)
+
+            if (players[i] != null)
             {
-                allPlayers+= players[i];
-            }
-            else
-            {
-                allPlayers += players[i]+" - ";
+                if (i== numberOfMembers()-1)
+                {
+                    allPlayers+= players[i];
+                }
+                else
+                {
+                    allPlayers += players[i]+" - ";
+                }
             }
         }
         return allPlayers;
