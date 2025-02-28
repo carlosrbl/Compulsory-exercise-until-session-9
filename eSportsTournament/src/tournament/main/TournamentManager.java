@@ -8,6 +8,7 @@ import tournament.data.*;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Random;
 
 public class TournamentManager
 {
@@ -17,7 +18,7 @@ public class TournamentManager
     Match[] registeredMatch = new Match[4];
 
     int registeredPlayerIndex = 10;
-    int registeredTeamIndex = 3;
+    int registeredTeamIndex = 5;
     int registeredTournamentIndex = 3;
     int registeredMatchIndex = 3;
 
@@ -43,11 +44,11 @@ public class TournamentManager
     }
     public void initializeTeam()
     {
-        registeredTeam[0] = new Team("Eucaliptos",new Player []{registeredPlayer[0],registeredPlayer[1],registeredPlayer[2],registeredPlayer[3]});
-        registeredTeam[1] = new Team("Aristogatos",new Player []{registeredPlayer[4],registeredPlayer[5],registeredPlayer[6],registeredPlayer[7]});
-        registeredTeam[2] = new Team("Los Thunderman", new Player []{registeredPlayer[8],registeredPlayer[9]});
-
-
+        registeredTeam[0] = new Team("Eucaliptos",new Player []{registeredPlayer[0],registeredPlayer[1]});
+        registeredTeam[1] = new Team("Aristogatos",new Player []{registeredPlayer[2],registeredPlayer[3]});
+        registeredTeam[2] = new Team("Los Thunderman", new Player []{registeredPlayer[4],registeredPlayer[5]});
+        registeredTeam[3] = new Team("Los Tragaperras",new Player []{registeredPlayer[6],registeredPlayer[7]});
+        registeredTeam[4] = new Team("Los Amateurs",new Player []{registeredPlayer[8],registeredPlayer[9]});
     }
     public void initializeTournament()
     {
@@ -58,6 +59,8 @@ public class TournamentManager
     }
     public void initializeMatch()
     {
+        Random rand = new Random();
+
         registeredMatch[0] = new Match(registeredTournament[0],registeredPlayer[0],registeredPlayer[1]);
         registeredMatch[1] = new Match(registeredTournament[1],registeredPlayer[3],registeredPlayer[4]);
         registeredMatch[2] =  new Match(registeredTournament[2],registeredPlayer[5],registeredPlayer[6]);
