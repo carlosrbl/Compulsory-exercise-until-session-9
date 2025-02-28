@@ -92,15 +92,6 @@ public class Main
             System.out.print("Enter rank of the player: ");
             String rank = sc.next();
             playerRank = Integer.parseInt(rank);
-            try {
-                BadPlayerInput.comprovePlayerLevel(playerRank);
-            }
-            catch (BadPlayerInput e)
-            {
-                System.err.println(e.getMessage());
-                System.out.println();
-                createPlayer(tournamentManager);
-            }
         }
         catch (NumberFormatException e)
         {
@@ -111,10 +102,10 @@ public class Main
 
         Player player = new Player(playerName,playerLevel,playerRank);
 
-        AddPlayerToTeam(tournamentManager,player);
+        addPlayerToTeam(tournamentManager,player);
     }
 
-    public static void AddPlayerToTeam(TournamentManager tournamentManager, Player player)
+    public static void addPlayerToTeam(TournamentManager tournamentManager, Player player)
     {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter team name: ");
@@ -134,6 +125,9 @@ public class Main
                 catch (FullTeamException e)
                 {
                     System.err.println(e.getMessage());
+                    System.out.println();
+                    System.out.println("Again:");
+                    addPlayerToTeam(tournamentManager,player);
                 }
             }
         }
