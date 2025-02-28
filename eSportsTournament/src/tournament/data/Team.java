@@ -1,11 +1,14 @@
 package tournament.data;
 import tournament.exceptions.*;
 public class Team extends Participant{
-    private Player[] players;
+    private Player[] players = new Player[5];
     private float averageTeamRanking;
     public Team(String name, Player[] players) {
         super(name);
-        this.players = players;
+        for(int i = 0; i < players.length; i++)
+        {
+            this.players[i] = players[i];
+        }
     }
 
     public Player[] getPlayers() {
@@ -60,7 +63,7 @@ public class Team extends Participant{
 
     public void addPlayer(Player p) throws FullTeamException
     {
-        if (players.length >= 5)
+        if (numberOfMembers() >= 5)
         {
             throw new FullTeamException("The number of players are minimum 2 and maximum 5");
         }
