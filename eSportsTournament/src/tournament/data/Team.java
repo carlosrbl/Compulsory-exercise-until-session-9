@@ -109,9 +109,9 @@ public class Team extends Participant{
     }
 
     /**
-     *
-     * @param p
-     * @throws FullTeamException
+     * This adds a new existent player to the team.
+     * @param p It takes an existent player
+     * @throws FullTeamException If the team has more than 5 players it gave an exception.
      */
 
     public void addPlayer(Player p) throws FullTeamException
@@ -125,6 +125,10 @@ public class Team extends Participant{
             players[numberOfMembers()] = p;
         }
     }
+
+    /**
+     * @return This returns in the same line the name of the team and all the characteristics of each player.
+     */
 
     @Override
     public String toString()
