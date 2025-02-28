@@ -1,5 +1,10 @@
+/**
+ * @author Carlos, Adrian, Miguel
+ * This class contains the method Main
+ */
 
 package tournament.main;
+
 import tournament.comparator.PlayersInformationComparator;
 import tournament.comparator.TeamsInformationComparator;
 import tournament.comparator.TournamentComparator;
@@ -15,6 +20,10 @@ import java.util.*;
 
 public class Main
 {
+    /**
+     * @param tournamentManager
+     * @return true if the user select the option 10 of the menu
+     */
     public static boolean showMenu(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
@@ -54,6 +63,11 @@ public class Main
         }
         return exit;
     }
+
+    /**
+     * this method creates a new player if the conditions are true
+     * @param tournamentManager
+     */
     public static void createPlayer(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
@@ -105,6 +119,11 @@ public class Main
         addPlayerToTeam(tournamentManager,player);
     }
 
+    /**
+     * this method adds the new player in a specific team
+     * @param tournamentManager
+     * @param player
+     */
     public static void addPlayerToTeam(TournamentManager tournamentManager, Player player)
     {
         Scanner sc = new Scanner(System.in);
@@ -136,6 +155,11 @@ public class Main
             System.out.print("Team not found");
         }
     }
+
+    /**
+     * this method finds an exact player with the name
+     * @param tournamentManager
+     */
     public static void findExactPlayer(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
@@ -155,6 +179,11 @@ public class Main
             System.out.println("Player not found");
         }
     }
+
+    /**
+     * this method finds a player if the name coincidence with the text that the user writes
+     * @param tournamentManager
+     */
     public static void findPlayer(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
@@ -174,6 +203,11 @@ public class Main
             System.out.println("Player not found");
         }
     }
+
+    /**
+     * this method finds a team
+     * @param tournamentManager
+     */
     public static void findTeam(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
@@ -193,6 +227,11 @@ public class Main
             System.out.println("Team not found");
         }
     }
+
+    /**
+     * this method changes the state of result
+     * @param tournamentManager
+     */
     public static void inputResult(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
@@ -221,6 +260,12 @@ public class Main
         }
     }
 
+    /**
+     * this method contains the 10 options of the menu
+     * @param choice
+     * @param tournamentManager
+     * @return true if the user select the option 10 of the menu
+     */
     public static boolean play(int choice, TournamentManager tournamentManager)
     {
         boolean exit = false;
@@ -273,6 +318,11 @@ public class Main
         }
         return exit;
     }
+
+    /**
+     * this method contains the main
+     * @param args
+     */
     public static void main(String[] args)
     {
         boolean exit = false;
@@ -283,4 +333,5 @@ public class Main
             exit = showMenu(tournamentManager);
         }
     }
+    //oal
 }

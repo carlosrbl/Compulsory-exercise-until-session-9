@@ -17,11 +17,13 @@ public class MixedTournament extends Tournament
         this.gameMode = gameMode;
     }
 
+    /**
+     * Comprove if the gameMode is correct
+     * @param gameMode
+     * @throws GameModeException
+     */
     public void comproveGameMode(String gameMode) throws GameModeException
     {
-        /**
-         * Comprove if the gameMode is correct
-         */
         if (!(gameMode.equalsIgnoreCase("1v1") || gameMode.equalsIgnoreCase("5v5")))
         {
             throw new GameModeException("The available game modes are 1v1 or 5v5.");
