@@ -163,7 +163,7 @@ public class Main
         boolean encontrado = false;
         for(int i = 0;i< tournamentManager.registeredPlayerIndex;i++)
         {
-            if(tournamentManager.registeredPlayer[i].getName().contains(playerName))
+            if(tournamentManager.registeredPlayer[i].getName().toLowerCase().contains(playerName.toLowerCase()))
             {
                 System.out.println(tournamentManager.registeredPlayer[i]);
                 encontrado = true;
@@ -182,7 +182,7 @@ public class Main
         boolean encontrado = false;
         for(int i = 0;i< tournamentManager.registeredTeamIndex;i++)
         {
-            if(tournamentManager.registeredTeam[i].getName().contains(teamName))
+            if(tournamentManager.registeredTeam[i].getName().toLowerCase().contains(teamName.toLowerCase()))
             {
                 System.out.println(tournamentManager.registeredTeam[i]);
                 encontrado = true;

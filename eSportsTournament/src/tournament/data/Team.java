@@ -16,6 +16,11 @@ public class Team extends Participant{
         this.players = players;
     }
 
+    public Player getPlayer(int index)
+    {
+        return players[index];
+    }
+
     public void comprovePlayers(Player[] players)
     {
         for(int i = 0; i < players.length; i++)
