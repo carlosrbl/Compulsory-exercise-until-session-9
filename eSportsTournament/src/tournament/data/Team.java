@@ -34,7 +34,6 @@ public class Team extends Participant{
                 count++;
             }
         }
-        //hola
         return count;
     }
 
