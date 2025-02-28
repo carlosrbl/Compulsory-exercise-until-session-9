@@ -1,3 +1,8 @@
+/**
+ * @author Adrian
+ * This class inherits from Participant and has an association with the class player, by using an array from players.
+ */
+
 package tournament.data;
 import tournament.exceptions.*;
 public class Team extends Participant{
@@ -8,18 +13,35 @@ public class Team extends Participant{
         comprovePlayers(players);
     }
 
+    /**
+     * @return This returns the players that compose the team.
+     */
+
     public Player[] getPlayers() {
         return players;
     }
+
+    /**
+     *
+     * @param index This is an integer to specify wich one of the players we want to return.
+     * @return This returns one player by specificating it by the parameter index.
+     */
+
+    public Player getPlayer(int index) {
+        return players[index];
+    }
+
+    /**
+     * @param players This sets the players of the team.
+     */
 
     public void setPlayers(Player[] players) {
         this.players = players;
     }
 
-    public Player getPlayer(int index)
-    {
-        return players[index];
-    }
+    /**
+     * @param players This checks if the introduced players are correct.
+     */
 
     public void comprovePlayers(Player[] players)
     {
@@ -28,6 +50,10 @@ public class Team extends Participant{
             this.players[i] = players[i];
         }
     }
+
+    /**
+     * @return This returns the amount of players of the team.
+     */
 
     public int numberOfMembers()
     {
@@ -42,6 +68,10 @@ public class Team extends Participant{
         return count;
     }
 
+    /**
+     * This is used in the string.
+     * @return It returns a string of all the players to use it in the toString method.
+     */
     public String showPlayers()
     {
         String allPlayers="";
@@ -62,6 +92,10 @@ public class Team extends Participant{
         }
         return allPlayers;
     }
+
+    /**
+     * @return This returns the average ranking of the team.
+     */
     public float getAverageTeamRanking()
     {
         float average=0;
@@ -74,6 +108,12 @@ public class Team extends Participant{
         return averageTeamRanking;
     }
 
+    /**
+     * This adds a new existent player to the team.
+     * @param p It takes an existent player
+     * @throws FullTeamException If the team has more than 5 players it gave an exception.
+     */
+
     public void addPlayer(Player p) throws FullTeamException
     {
         if (numberOfMembers() >= 5)
@@ -85,6 +125,10 @@ public class Team extends Participant{
             players[numberOfMembers()] = p;
         }
     }
+
+    /**
+     * @return This returns in the same line the name of the team and all the characteristics of each player.
+     */
 
     @Override
     public String toString()

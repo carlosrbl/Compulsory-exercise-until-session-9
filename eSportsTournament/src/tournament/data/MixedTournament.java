@@ -1,3 +1,8 @@
+/**
+ * @author Carlos
+ * This abstract class contains tournaments
+ */
+
 package tournament.data;
 
 import tournament.exceptions.GameModeException;
@@ -14,6 +19,9 @@ public class MixedTournament extends Tournament
 
     public void comproveGameMode(String gameMode) throws GameModeException
     {
+        /**
+         * Comprove if the gameMode is correct
+         */
         if (!(gameMode.equalsIgnoreCase("1v1") || gameMode.equalsIgnoreCase("5v5")))
         {
             throw new GameModeException("The available game modes are 1v1 or 5v5.");
@@ -23,17 +31,25 @@ public class MixedTournament extends Tournament
             this.gameMode = gameMode;
         }
     }
-
+    /**
+     * @return tournament parameters
+     */
     @Override
     public String toString() {
         return "Mixed" + super.toString() + " - GameMode: " + gameMode;
     }
 
+    /**
+     * @return parameter
+     */
     public String getGameMode()
     {
         return gameMode;
     }
 
+    /**
+     * @param gameMode
+     */
     public void setGameMode(String gameMode)
     {
         this.gameMode = gameMode;

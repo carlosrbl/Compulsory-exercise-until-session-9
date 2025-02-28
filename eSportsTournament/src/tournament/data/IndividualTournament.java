@@ -1,3 +1,8 @@
+/**
+ * @author Carlos
+ * This abstract class contains tournaments
+ */
+
 package tournament.data;
 
 public class IndividualTournament extends Tournament
@@ -6,7 +11,9 @@ public class IndividualTournament extends Tournament
     {
         super(name, game, prize);
     }
-
+    /**
+     * @return tournament parameters
+     */
     @Override
     public String toString() {
         return "Individual" + super.toString();

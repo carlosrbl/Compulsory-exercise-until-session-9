@@ -1,3 +1,10 @@
+/**
+ * @author Adrian
+ * This exception is made to check the input of the user
+ * in the 4th option in the main class.
+ */
+
+
 package tournament.exceptions;
 
 public class BadPlayerInput extends Exception
@@ -7,6 +14,12 @@ public class BadPlayerInput extends Exception
         super(message);
     }
 
+    /**
+     * @param name Takes the name of the player that we want to create.
+     * @return If all is correct it returns the name back.
+     * @throws BadPlayerInput If the name of the player has in their name any other character that is not a letter it will throw the exception.
+     *
+     */
 
     public static String comproveName(String name) throws BadPlayerInput
     {
@@ -21,6 +34,12 @@ public class BadPlayerInput extends Exception
         return name;
     }
 
+    /**
+     *
+     * @param level Takes the level of the player that we want to create.
+     * @return If all is correct it returns the level of the player.
+     * @throws BadPlayerInput It is the same as the other but this checks if the level is between 1 and 100.
+     */
     public static int comprovePlayerLevel(int level) throws BadPlayerInput
     {
         if (level < 0 || level > 100)

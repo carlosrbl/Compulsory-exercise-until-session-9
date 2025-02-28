@@ -136,7 +136,7 @@ public class Main
             System.out.print("Team not found");
         }
     }
-    public static void FindExactPlayer(TournamentManager tournamentManager)
+    public static void findExactPlayer(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter player name: ");
@@ -155,7 +155,7 @@ public class Main
             System.out.println("Player not found");
         }
     }
-    public static void FindPlayer(TournamentManager tournamentManager)
+    public static void findPlayer(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter player name: ");
@@ -174,7 +174,7 @@ public class Main
             System.out.println("Player not found");
         }
     }
-    public static void FindTeam(TournamentManager tournamentManager)
+    public static void findTeam(TournamentManager tournamentManager)
     {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter team name: ");
@@ -243,15 +243,15 @@ public class Main
                 System.out.println();
                 break;
             case 5:
-                FindExactPlayer(tournamentManager);
+                findExactPlayer(tournamentManager);
                 System.out.println();
                 break;
             case 6:
-                FindPlayer(tournamentManager);
+                findPlayer(tournamentManager);
                 System.out.println();
                 break;
             case 7:
-                FindTeam(tournamentManager);
+                findTeam(tournamentManager);
                 System.out.println();
                 break;
             case 8:

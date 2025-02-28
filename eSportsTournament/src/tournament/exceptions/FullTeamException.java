@@ -1,3 +1,7 @@
+/**
+ * @author Adrian
+ * This exception checks if the team has more than 5 players in it.
+ */
 package tournament.exceptions;
 
 
