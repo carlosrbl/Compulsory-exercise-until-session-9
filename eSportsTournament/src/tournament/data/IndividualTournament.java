@@ -1,3 +1,8 @@
+/**
+ * @author Carlos
+ * This abstract class contains tournaments
+ */
+
 package tournament.data;
 
 public class IndividualTournament extends Tournament
