@@ -33,7 +33,7 @@ public class TournamentManager
         registeredPlayer[0] = new Player("Alejandro",12,453.1f);
         registeredPlayer[1] = new Player("Valeria",19,483.1f);
         registeredPlayer[2] = new Player("Mateo",52,899.0f);
-        registeredPlayer[3] = new Player("Isabella",91,91.45f);
+        registeredPlayer[3] = new Player("Isabella",91,222.2f);
         registeredPlayer[4] = new Player("Santiago",23,532.2f);
         registeredPlayer[5] = new Player("Camila",99,222.2f);
         registeredPlayer[6] = new Player("Leonardo",38,753.3f);
