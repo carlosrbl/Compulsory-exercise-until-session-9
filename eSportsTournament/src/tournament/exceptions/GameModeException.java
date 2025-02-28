@@ -5,3 +5,4 @@ public class GameModeException extends Exception {
         super(message);
     }
 }
+

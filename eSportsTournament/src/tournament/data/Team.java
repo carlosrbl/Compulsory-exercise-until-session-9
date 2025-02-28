@@ -12,14 +12,15 @@ public class Team extends Participant{
         return players;
     }
 
+
+    public Player getPlayer(int index) {
+        return players[index];
+    }
+
     public void setPlayers(Player[] players) {
         this.players = players;
     }
 
-    public Player getPlayer(int index)
-    {
-        return players[index];
-    }
 
     public void comprovePlayers(Player[] players)
     {
