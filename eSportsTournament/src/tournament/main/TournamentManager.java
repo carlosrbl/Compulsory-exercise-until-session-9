@@ -15,7 +15,7 @@ public class TournamentManager
     Player[]  registeredPlayer = new Player[20];
     Team[] registeredTeam = new Team[10];
     Tournament[] registeredTournament = new Tournament[6];
-    Match[] registeredMatch = new Match[4];
+    Match[] registeredMatch = new Match[5];
 
     int registeredPlayerIndex = 10;
     int registeredTeamIndex = 5;
@@ -60,10 +60,20 @@ public class TournamentManager
     public void initializeMatch()
     {
         Random rand = new Random();
+        Team t1;
+        Team t2;
 
-        registeredMatch[0] = new Match(registeredTournament[0],registeredPlayer[0],registeredPlayer[1]);
-        registeredMatch[1] = new Match(registeredTournament[1],registeredPlayer[3],registeredPlayer[4]);
-        registeredMatch[2] =  new Match(registeredTournament[2],registeredPlayer[5],registeredPlayer[6]);
+        for (int i=0;i<registeredMatchIndex;i++)
+        {
+            do
+            {
+                t1 = registeredTeam[rand.nextInt(0, registeredTeamIndex)];
+                t2 = registeredTeam[rand.nextInt(0, registeredTeamIndex)];
+            }
+            while(t1.getName().equals(t2.getName()));
+            registeredMatch[i] = new Match(registeredTournament[rand.nextInt(0, registeredTournamentIndex)],
+                    t1.getPlayer(rand.nextInt(0,t1.numberOfMembers())), t2.getPlayer(rand.nextInt(0,t2.numberOfMembers())));
+        }
     }
 
     public Player findPlayer(String username)
